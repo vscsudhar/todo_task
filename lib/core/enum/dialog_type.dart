@@ -1,0 +1,10 @@
+enum DialogType {
+  error,
+  confirmation,
+  dateConfirmation,
+  fullScreenSuccess,
+  fullScreenFailure,
+  imagePicker,
+  message,
+  infoAlert, success,
+}
