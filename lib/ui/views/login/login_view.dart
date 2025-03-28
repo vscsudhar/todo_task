@@ -49,6 +49,7 @@ class LoginView extends StackedView<LoginViewModel> {
               ),
               verticalSpacing20,
               TextFormField(
+                obscureText: true,
                 key: ValueKey('passlogin'),
                 style: fontFamilyMedium.size16.copyWith(color: Colors.white),
                 decoration: InputDecoration(
@@ -68,9 +69,11 @@ class LoginView extends StackedView<LoginViewModel> {
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: ElevatedButton(
                     onPressed: () async {
-                      _formKey.currentState?.save();
-                      viewModel.loginCredentials();
-                      _formKey.currentState?.reset();
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState?.save();
+                        viewModel.loginCredentials();
+                        _formKey.currentState?.reset();
+                      }
                     },
                     child: Text(
                       'Login  ',

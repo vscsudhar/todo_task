@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_task/ui/common/shared/styles.dart';
 
 extension TextStyleHelpers on TextStyle {
-  TextStyle get size8 => copyWith(fontSize: 8 * scale);
-  TextStyle get size10 => copyWith(fontSize: 10 * scale);
-  TextStyle get size12 => copyWith(fontSize: 12 * scale);
-  TextStyle get size14 => copyWith(fontSize: 14 * scale);
-  TextStyle get size16 => copyWith(fontSize: 16 * scale);
-  TextStyle get size18 => copyWith(fontSize: 18 * scale);
-  TextStyle get size20 => copyWith(fontSize: 20 * scale);
-  TextStyle get size22 => copyWith(fontSize: 22 * scale);
-  TextStyle get size24 => copyWith(fontSize: 24 * scale);
-  TextStyle get size26 => copyWith(fontSize: 26 * scale);
-  TextStyle get size28 => copyWith(fontSize: 28 * scale);
-  TextStyle get size30 => copyWith(fontSize: 30 * scale);
-  TextStyle get size32 => copyWith(fontSize: 32 * scale);
-  TextStyle get size34 => copyWith(fontSize: 34 * scale);
+  TextStyle get size8 => copyWith(fontSize: 8.sp * scale);
+  TextStyle get size10 => copyWith(fontSize: 10.sp * scale);
+  TextStyle get size12 => copyWith(fontSize: 12.sp * scale);
+  TextStyle get size14 => copyWith(fontSize: 14.sp * scale);
+  TextStyle get size16 => copyWith(fontSize: 16.sp * scale);
+  TextStyle get size18 => copyWith(fontSize: 18.sp * scale);
+  TextStyle get size20 => copyWith(fontSize: 20.sp * scale);
+  TextStyle get size22 => copyWith(fontSize: 22.sp * scale);
+  TextStyle get size24 => copyWith(fontSize: 24.sp * scale);
+  TextStyle get size26 => copyWith(fontSize: 26.sp * scale);
+  TextStyle get size28 => copyWith(fontSize: 28.sp * scale);
+  TextStyle get size30 => copyWith(fontSize: 30.sp * scale);
+  TextStyle get size32 => copyWith(fontSize: 32.sp * scale);
+  TextStyle get size34 => copyWith(fontSize: 34.sp * scale);
 
   TextStyle get color2699FB => copyWith(color: appcolorFF7612);
   TextStyle get colororg => copyWith(color: appcolororenge);

@@ -17,7 +17,7 @@ class PendingWidget extends StatelessWidget {
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
         return StreamBuilder<List<TodoModel>>(
-          stream: viewModel.getTodos(), // Fetch todos from ViewModel
+          stream: viewModel.getTodos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -78,15 +78,8 @@ class PendingWidget extends StatelessWidget {
                         icon: Icons.edit,
                         label: 'Edit',
                         onPressed: (context) async {
-                          // if (todo.createdBy == FirebaseAuth.instance.currentUser!.email) {
                           viewModel.setTodoModel(todo);
                           showTaskDialog(context, viewModel);
-
-                          // } else {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //     SnackBar(content: Text('You can only edit your own tasks!')),
-                          //   );
-                          // }
                         },
                       ),
                       SlidableAction(
@@ -105,13 +98,13 @@ class PendingWidget extends StatelessWidget {
                                   actions: [
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.of(context).pop(); // Close dialog
+                                        Navigator.of(context).pop();
                                       },
                                       child: const Text('Cancel'),
                                     ),
                                     TextButton(
                                       onPressed: () async {
-                                        Navigator.of(context).pop(); // Close dialog before logging out
+                                        Navigator.of(context).pop();
                                         await viewModel.datebaseService.deleteTodoTask(todo.id);
                                         ScaffoldMessenger.of(context).showSnackBar(
                                           const SnackBar(
@@ -125,7 +118,6 @@ class PendingWidget extends StatelessWidget {
                                 );
                               },
                             );
-                            // viewModel.datebaseService.deleteTodoTask(todo.id);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('You can only delete your own tasks!')),
@@ -231,6 +223,7 @@ class PendingWidget extends StatelessWidget {
 
   void showShareDialog(BuildContext context, HomeViewModel viewModel, TodoModel todo) {
     TextEditingController emailController = TextEditingController();
+    User? user;
 
     showDialog(
       context: context,
@@ -252,7 +245,7 @@ class PendingWidget extends StatelessWidget {
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
-                  labelText: 'Enter recipient email',
+                  labelText: 'Enter register recipient email',
                   border: OutlineInputBorder(),
                 ),
               ),

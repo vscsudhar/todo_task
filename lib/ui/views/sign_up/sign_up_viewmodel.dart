@@ -12,19 +12,20 @@ class SignUpViewModel extends BaseViewModel with NavigationMixin {
   String? _email;
   String? _pass;
 
+  String? get pass => _pass;
+
   void emailSave(String email) {
     _email = email;
     notifyListeners();
   }
 
-  void passSave(String pass) {
-    _pass = pass;
+  void passSave(String password) {
+    _pass = password;
     notifyListeners();
   }
 
   Future<void> registerCredentials() async {
-    User? user = await _authService.registerWithEmailAndPassword(
-        _email.toString(), _pass.toString());
+    User? user = await _authService.registerWithEmailAndPassword(_email.toString(), _pass.toString());
 
     if (user != null) {
       goToLogin();

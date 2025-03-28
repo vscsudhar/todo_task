@@ -25,11 +25,18 @@ class LoginViewModel extends BaseViewModel with NavigationMixin {
   }
 
   Future<void> loginCredentials() async {
-    User? user = await _authService.signInWithEmailAndPassword(_email.toString(), _pass.toString());
+    User? user = await runBusyFuture(_authService.signInWithEmailAndPassword(_email.toString(), _pass.toString()).catchError((e) {
+      print(e);
+      if (hasError) {
+        print('login failed');
+      }
+    }));
 
     if (user != null) {
       goToHome();
       showDialogmessage('Login success....!');
+    }else{
+      showDialogmessage('User not register');
     }
     notifyListeners();
   }
