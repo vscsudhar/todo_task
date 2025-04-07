@@ -1,47 +1,47 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import 'package:todo_task/app/app.locator.dart';
-import 'package:todo_task/core/navigation/navigation_mixin.dart';
-import 'package:todo_task/services/auth_service.dart';
+    import 'package:firebase_auth/firebase_auth.dart';
+    import 'package:stacked/stacked.dart';
+    import 'package:stacked_services/stacked_services.dart';
+    import 'package:todo_task/app/app.locator.dart';
+    import 'package:todo_task/core/navigation/navigation_mixin.dart';
+    import 'package:todo_task/services/auth_service.dart';
 
-class LoginViewModel extends BaseViewModel with NavigationMixin {
-  LoginViewModel() {}
+    class LoginViewModel extends BaseViewModel with NavigationMixin {
+      LoginViewModel() {}
 
-  final AuthService _authService = locator<AuthService>();
-  final _dialogService = locator<DialogService>();
+      final AuthService _authService = locator<AuthService>();
+      final _dialogService = locator<DialogService>();
 
-  String? _email;
-  String? _pass;
+      String? _email;
+      String? _pass;
 
-  void emailSave(String email) {
-    _email = email;
-    notifyListeners();
-  }
-
-  void passSave(String pass) {
-    _pass = pass;
-    notifyListeners();
-  }
-
-  Future<void> loginCredentials() async {
-    User? user = await runBusyFuture(_authService.signInWithEmailAndPassword(_email.toString(), _pass.toString()).catchError((e) {
-      print(e);
-      if (hasError) {
-        print('login failed');
+      void emailSave(String email) {
+        _email = email;
+        notifyListeners();
       }
-    }));
 
-    if (user != null) {
-      goToHome();
-      showDialogmessage('Login success....!');
-    }else{
-      showDialogmessage('User not register');
+      void passSave(String pass) {
+        _pass = pass;
+        notifyListeners();
+      }
+
+      Future<void> loginCredentials() async {
+        User? user = await runBusyFuture(_authService.signInWithEmailAndPassword(_email.toString(), _pass.toString()).catchError((e) {
+          print(e);
+          if (hasError) {
+            print('login failed');
+          }
+        }));
+
+        if (user != null) {
+          goToHome();
+          showDialogmessage('Login success....!');
+        }else{
+          showDialogmessage('User not register');
+        }
+        notifyListeners();
+      }
+
+      void showDialogmessage(String message) {
+        _dialogService.showCustomDialog(title: "Message", description: message);
+      }
     }
-    notifyListeners();
-  }
-
-  void showDialogmessage(String message) {
-    _dialogService.showCustomDialog(title: "Message", description: message);
-  }
-}

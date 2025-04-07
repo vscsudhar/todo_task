@@ -1,5 +1,4 @@
 import 'package:todo_task/ui/bottom_sheets/notice/notice_sheet.dart';
-import 'package:todo_task/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:todo_task/ui/views/home/home_view.dart';
 import 'package:todo_task/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
